@@ -1,0 +1,13 @@
+Single linked list  : 1 pointer
+        search only  move to backward or forward
+        because each node have a next
+
+Double linked list  : 2 pointer
+        search by node [_Prev_  and  _Next_]
+
+Circular linked list : 2 pointer
+        search by current node 
+        add node to both head and tail
+        can move backward and forward
+
+MỖI NODE ĐỀU CÓ 1CẶP "HEAD-TAIL" VÀ TRỎ TỚI NODE TIẾP THEO ĐỂ ADD BẰNG "NEXT" 
