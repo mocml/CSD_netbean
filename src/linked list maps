@@ -10,5 +10,4 @@ Circular linked list : 2 pointer
         add node to both head and tail
         can move backward and forward
 
-MỖI NODE ĐỀU CÓ 1CẶP "HEAD-TAIL" VÀ TRỎ TỚI NODE TIẾP THEO ĐỂ ADD BẰNG "NEXT" \
-asdasd
+MỖI NODE ĐỀU CÓ 1CẶP "HEAD-TAIL" VÀ TRỎ TỚI NODE TIẾP THEO ĐỂ ADD BẰNG "NEXT" 
