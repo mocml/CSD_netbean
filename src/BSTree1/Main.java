@@ -19,18 +19,18 @@ public class Main {
         t.insertMany(a);
         System.out.println("1. Breath first traversal");
         t.breath(t.root);
-
-        System.out.println("2. Pre-order traversal");
-        t.preOrder(t.root);
         System.out.println();
-
-        System.out.println("2. In-order traversal");
-        t.inOrder(t.root);
-        System.out.println();
-
-        System.out.println("2. Post-order traversal");
-        t.postOrder(t.root);
-        System.out.println();
+//        System.out.println("2. Pre-order traversal");
+//        t.preOrder(t.root);
+//        System.out.println();
+//
+//        System.out.println("2. In-order traversal");
+//        t.inOrder(t.root);
+//        System.out.println();
+//
+//        System.out.println("2. Post-order traversal");
+//        t.postOrder(t.root);
+//        System.out.println();
 
     }
 }
