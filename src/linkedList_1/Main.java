@@ -17,8 +17,8 @@ public class Main {
         Node p, q;
         Person x;
         int k;
-        String[] name = {"Van", "Van 1", "Van 2", "Van 3", "Van 4", "Van 5"};
-        int[] age = {1, 2, 3, 4, 5, 6};
+        String[] name = {"Van", "Van 1", "Van 3", "Van 2", "Van 4", "Van 5"};
+        int[] age = {1, 2, 4, 5, 3, 6};
         boolean[] gender = {true, false};
         String[] address = {"HN", "HP", "QN", "HD", "BN", "NB"};
         String[] phone = {"+84121212", "3434234", "2342343", "23124", "1312312", "31634978"};
@@ -189,21 +189,21 @@ public class Main {
         m.clear();
         m.addMany(name, age, gender, address, phone);
         m.traverse(); // (A,9) (C,5) (B,17) (E,5) (D,8)
-        p= m.searchByName("Van 2");
+        p = m.searchByName("Van 2");
         x = new Person("X", 30, true, "HN", "+832132");
         m.setData(p, x);
         m.traverse(); // (D,8) (E,5) (XX,99) (C,5) (A,9)
 
         String[] c = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
         int[] d = {9, 8, 7, 6, 15, 4, 3, 2, 1};
-        System.out.println("\n20. Test sortByAge(3, 6)");
+        System.out.println("\n20. Test sortByAge(3, 5)");
         m.clear();
         m.addMany(name, age, gender, address, phone);
         m.traverse(); // (A,9) (B,8) (C,7) (D,6) (E,15) (F,4) (G,3) (H,2) (I,1)
-        m.sortByAge(3, 6);
+        m.sortByAge(3, 5);
         m.traverse(); // (A,9) (B,8) (C,7) (G,3) (F,4) (D,6) (E,15) (H,2) (I,1) 
 
-        System.out.println("\n21. Test reverse(3, 6)");
+        System.out.println("\n21. Test reverse(3, 5)");
         m.clear();
         m.addMany(name, age, gender, address, phone);
         m.traverse(); // (A,9) (B,8) (C,7) (D,6) (E,15) (F,4) (G,3) (H,2) (I,1)

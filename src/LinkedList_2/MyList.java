@@ -1,65 +1,39 @@
-/*
- * Copyright(C) 2021 ,FPT UNIVERSITY
- * 
- * DATE        Version         Author          DESCRIPTION
- * 09/08/2021    1.0            Vanhv   
- */
-package linkedList_1;
+package LinkedList_2;
 
-/**
- *
- * @author vanhv
- */
 public class MyList {
 
     Node head, tail;
 
-    public MyList() {
+    MyList() {
         head = tail = null;
     }
 
     boolean isEmpty() {
-        return head == null;
+        return (head == null);
     }
 
     void clear() {
         head = tail = null;
     }
 
-//Add all person by person of list to last
+    // (1) 
     void addLast(Person x) {
-        //initialization the object of Note
         Node q = new Node(x);
-        // if node empty head = tail = new Node
         if (isEmpty()) {
             head = tail = q;
             return;
         }
-        //else tail.next = new Node
-        //tail = new Node
         tail.next = q;
         tail = q;
     }
 
-    void searchAllAge(int age) {
-        Node p = head;
-        while (p != null) {
-            if (p.person.age == age) {
-                visit(p);
-            }
-            p = p.next;
-        }
-    }
-
-    //if Node exist object p , print p
     void visit(Node p) {
         if (p != null) {
-            System.out.println(p.person);
+            System.out.print(p.info);
         }
     }
 
     void traverse() {
-        //Node p = head, run to index 0 , and visit while Node at index+1 != null
         Node p = head;
         while (p != null) {
             visit(p);
@@ -68,71 +42,69 @@ public class MyList {
         System.out.println();
     }
 
-    //Add all person by add last
-    void addMany(String[] name, int[] age, boolean[] gender, String[] address, String[] phone) {
-        int n = name.length;
-        for (int i = 0; i < n; i++) {
-            addLast(new Person(name[i], age[i], gender[i % 2], address[i], phone[i]));
+    void addMany(String[] a, int[] b) {
+        int n, i;
+        n = a.length;
+        for (i = 0; i < n; i++) {
+            addLast(new Person(a[i], b[i]));
         }
     }
 
-    Node searchByName(String name) {
+    // (2)
+    Node searchByName(String xName) {
         Node p = head;
         while (p != null) {
-            if (p.person.name.equals(name)) {
-                return p;
+            if (p.info.name.equals(xName)) {
+                return (p);
             }
             p = p.next;
         }
-        return null;
+        return (null);
     }
 
     Node searchByAge(int age) {
         Node p = head;
         while (p != null) {
-            if (p.person.age == age) {
-                return p;
+            if (p.info.age == (age)) {
+                return (p);
             }
             p = p.next;
         }
-        return null;
+        return (null);
     }
-//Add first
 
-    /**
-     * <code> vai trò của head trong new Node ??</code>
-     *
-     * @param person
-     */
-    //sau khi traverse thì khởi tạo 1 thằng Node(person , head) next -->> head
-    //tạo 1 node mới nối vào head, đồng thời trỏ head vào node mới
-    void addFirst(Person person) {
-        Node q = new Node(person, head);
-        head = q;
-        //
+    void searchAllAge(int age) {
+        Node p = head;
+        while (p != null) {
+            if (p.info.age == age) {
+                visit(p);
+            }
+            p = p.next;
+        }
+    }
+
+    // (3)
+    void addFirst(Person x) {
+        head = new Node(x, head);
         if (tail == null) {
             tail = head;
         }
     }
-//insert After
 
-    void insertAfter(Node q, Person person) {
+    // (4)
+    void insertAfter(Node q, Person x) {
         if (q == null) {
             return;
         }
         Node qNext = q.next;
-        Node pNew = new Node(person, qNext);
+        Node pNew = new Node(x, qNext);
         q.next = pNew;
         if (tail == q) {
             tail = pNew;
         }
     }
 
-    /**
-     *
-     * @param q Node search to add
-     * @param person
-     */
+    // (5)
     void insertBefore(Node q, Person person) {
         if (q == null) {
             return;
@@ -141,19 +113,19 @@ public class MyList {
             addFirst(person);
             return;
         }
-        //Tạo 1 node find = head để check từ đầu đến node q nếu 
-        //Nếu tìm thấy node q thì lấy ra node find.next(q.prev) để add after
-        Node find = head;
-        //Nếu node find != null và F.NEXT != Q thì tiếp tục next 
-        while (find != null && find.next != q) {
-            find = find.next;
+        //Tạo 1 node F = head để check từ đầu đến node q nếu 
+        // Nếu tìm thấy node q thì lấy ra node f.next(q.prev) để add after
+        Node f = head;
+        //Nếu node f != null và F.NEXT != Q thì tiếp tục next 
+        while (f != null && f.next != q) {
+            f = f.next;
         }
-        //khi find not found q break;
-        if (find == null) {
+        //khi f not found q break;
+        if (f == null) {
             return;
         }
-        //Nếu đúng thì add to after q by find = find.next
-        insertAfter(find, person);
+        //Nếu đúng thì add to after q by f.next
+        insertAfter(f, person);
     }
 
     void removeFirst() {
@@ -241,11 +213,39 @@ public class MyList {
         Person x;
         for (pi = head; pi != null; pi = pi.next) {
             for (pj = pi.next; pj != null; pj = pj.next) {
-                if (pi.person.name.compareTo(pj.person.name) > 0) {
-                    x = pj.person;
-                    pj.person = pi.person;
-                    pi.person = x;
+                if (pi.info.name.compareTo(pj.info.name) > 0) {
+                    x = pj.info;
+                    pj.info = pi.info;
+                    pi.info = x;
                 }
+            }
+        }
+    }
+//sort 3 first element 
+
+    public void sortThird() {
+        Node pi, pj;
+        pi = head;
+        int count = 0;
+        while (pi != null) {
+            count++;
+            pj = pi.next;
+            int count1 = 0;
+            while (pj != null) {
+                count1++;
+                if (pi.info.name.compareToIgnoreCase(pj.info.name) < 0) {
+                    Person t = pi.info;
+                    pi.info = pj.info;
+                    pj.info = t;
+                }
+                pj = pj.next;
+                if (count1 == 3 - count) {
+                    break;
+                }
+            }
+            pi = pi.next;
+            if (count == 2) {
+                break;
             }
         }
     }
@@ -256,10 +256,10 @@ public class MyList {
         Person x;
         for (pi = head; pi != null; pi = pi.next) {
             for (pj = pi.next; pj != null; pj = pj.next) {
-                if (pi.person.age > pj.person.age) {
-                    x = pj.person;
-                    pj.person = pi.person;
-                    pi.person = x;
+                if (pi.info.age > pj.info.age) {
+                    x = pj.info;
+                    pj.info = pi.info;
+                    pi.info = x;
                 }
             }
         }
@@ -284,7 +284,7 @@ public class MyList {
         Node p = head;
         i = 0;
         while (p != null) {
-            a[i++] = new Person(p.person.name, p.person.age);
+            a[i++] = new Person(p.info.name, p.info.age);
             p = p.next;
         }
         return (a);
@@ -296,7 +296,7 @@ public class MyList {
         MyList h = new MyList();
         Node p = head;
         while (p != null) {
-            h.addFirst(new Person(p.person.name, p.person.age));
+            h.addFirst(new Person(p.info.name, p.info.age));
             p = p.next;
         }
         head = h.head;
@@ -311,12 +311,12 @@ public class MyList {
         Node q = null;
         Node p = head;
         int x;
-        x = p.person.age;
+        x = p.info.age;
         p = p.next;
         while (p != null) {
-            if (p.person.age > x) {
+            if (p.info.age > x) {
                 q = p;
-                x = p.person.age;
+                x = p.info.age;
             }
             p = p.next;
         }
@@ -326,18 +326,17 @@ public class MyList {
     // (18) 
     Node findMinAge() {
         if (isEmpty()) {
-            System.out.println("NULL");
             return null;
         }
         Node q = null;
         Node p = head;
         int x;
-        x = p.person.age;
+        x = p.info.age;
         p = p.next;
         while (p != null) {
-            if (p.person.age < x) {
+            if (p.info.age < x) {
                 q = p;
-                x = p.person.age;
+                x = p.info.age;
             }
             p = p.next;
         }
@@ -349,7 +348,7 @@ public class MyList {
         if (p == null) {
             return;
         }
-        p.person = x;
+        p.info = x;
     }
 
     // (20) 
@@ -370,10 +369,10 @@ public class MyList {
         Node v = pos(h + 1);
         for (pi = u; pi != v; pi = pi.next) {
             for (pj = pi.next; pj != v; pj = pj.next) {
-                if (pi.person.age > pj.person.age) {
-                    x = pj.person;
-                    pj.person = pi.person;
-                    pi.person = x;
+                if (pi.info.age > pj.info.age) {
+                    x = pj.info;
+                    pj.info = pi.info;
+                    pi.info = x;
                 }
             }
         }
